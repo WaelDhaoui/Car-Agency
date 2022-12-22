@@ -1,2 +1,2 @@
-# Custom-Module
+# Car-Agency
 development a custom module in Odoo
