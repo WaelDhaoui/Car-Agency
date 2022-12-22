@@ -1,0 +1,23 @@
+{
+    'name': 'Car Agency',
+    'version': '1.0.0',
+    'category': 'Selling',
+    'sequence': -104,
+    'author': 'Wael',
+    'summary': 'Rent',
+    'description': """This is car agency""",
+    'depends': ['mail', 'account'],
+    'data': [
+        'security/ir.model.access.csv',
+        'wizard/damage.xml',
+        'data/sequence.xml',
+        'views/agency.xml',
+        'views/car.xml',
+        'views/car_brand.xml',
+        'views/customer.xml',
+        'views/menu.xml',
+    ],
+    'application': True,
+    'installable': True,
+    'license': 'LGPL-3',
+}

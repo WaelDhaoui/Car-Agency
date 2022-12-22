@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--form-->
+    <record id="car_damaged_view_form" model="ir.ui.view">
+        <field name="name">Car Damaged Wizard Form</field>
+        <field name="model">damage.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="note"/>
+                </group>
+                <footer>
+                    <button name="action_launch" string="Confirm" type="object" class="oe_highlight" data-hotkey="q"/>
+                    <button string="Discard" class="btn-secondary" special="cancel" data-hotkey="z"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!--action-->
+    <record id='car_damaged_action' model='ir.actions.act_window'>
+        <field name="name">Car Damaged Wizard</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">damage.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

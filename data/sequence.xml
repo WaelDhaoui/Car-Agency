@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Sequences for car.car -->
+        <record id="seq_car_car" model="ir.sequence">
+            <field name="name">Car Sequence</field>
+            <field name="code">car.car</field>
+            <field name="prefix">S</field>
+            <field name="padding">3</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <!-- Sequences for car.agency -->
+        <record id="seq_car_agency" model="ir.sequence">
+            <field name="name">Agency Sequence</field>
+            <field name="code">car.agency</field>
+            <field name="prefix">S</field>
+            <field name="padding">3</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--form-->
+    <record id="car_car_view_form" model="ir.ui.view">
+        <field name="name">Car Form</field>
+        <field name="model">car.car</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button id="button_damaged_cars"
+                            string="Damaged"
+                            name="%(car_damaged_action)d"
+                            type="action"/>
+
+                    <button id="button_undamaged_cars"
+                            string="Undamaged"
+                            name="button_undamaged_cars"
+                            type="object"
+                            attrs="{'invisible': [('state', '!=', 'damaged')]}"/>
+                    <button id="button_available_cars"
+                            string="Available"
+                            name="button_available_cars"
+                            type="object"
+                            attrs="{'invisible': [('state', '=', 'damaged')]}"/>
+                    <button id="button_rented_cars"
+                            string="Rented"
+                            name="button_rented_cars"
+                            type="object"
+                            attrs="{'invisible': [('state', '=', 'damaged')]}"/>
+
+                   <field name="state" widget="statusbar" statusbar_visible="available,rented,damaged"/> <!-- statusbar_invisible="available,rented"-->
+
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="car_seq" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="reg_num"/>
+                            <field name="car_model"/>
+                            <field name="note_car" />
+                            <field name="damage_state" attrs="{'invisible': [(1, '=', 1)]}"/>
+                        </group>
+                        <group>
+                            <field name="customer_id"/>
+                            <field name="mileage"/>
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!--tree-->
+    <record id="car_car_view_tree" model="ir.ui.view">
+        <field name="name">Car List</field>
+        <field name="model">car.car</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="car_seq"/>
+                <field name="car_model"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--search-->
+    <record id="car_car_view_search" model="ir.ui.view">
+        <field name="name">Car Search</field>
+        <field name="model">car.car</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="reg_num"/>
+                <filter string="Available"
+                        name="filter_available"
+                        domain="[('state','=','available')]"/>
+                <filter string="Rented"
+                        name="filter_rented"
+                        domain="[('state','=','rented')]"/>
+            </search>
+        </field>
+    </record>
+
+    <!--action-->
+    <record id='car_car_action' model='ir.actions.act_window'>
+        <field name="name">Car</field>
+        <field name="res_model">car.car</field>
+        <field name="view_mode">tree,form,search</field>
+        <field name="context">{'default_state': 'available'}</field>
+    </record>
+
+</odoo>
